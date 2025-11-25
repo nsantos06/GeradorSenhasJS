@@ -3,11 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="reset.css">
     <title>Document</title>
 </head>
 <body>
-    <h1>Gerador de Senhas</h1>
-    <p>Utilize o nosso gerador online para criar uma senha forte</p>
+    <main>
+    <section class="hero">
+        <h1 class ="title">Gerador de Senhas</h1>
+        <p class ="subtitle">
+            Utilize o nosso gerador online para criar uma senha forte e segura.
+        </p>
+    </section>
 
     <input type="text" name="password" id="password"/>
     
@@ -19,10 +29,12 @@
         min="4" 
         max="64"
     />
-    <button>Copiar Senha</button>
-
+    <button id = "copy">Copiar Senha</button>
+    </main>   
+    
     <script>
         let passwordLength = 16
+        const inputEl = document.querySelector("#password")
         
         //Função para gerar a senha
         function generatePassword(){
@@ -34,9 +46,13 @@
                 const randomNumber = Math.floor(Math.random() * chars.length)
                 password += chars.substring(randomNumber, randomNumber + 1)
             }
-            const inputEl = document.querySelector("#password")
             inputEl.value = password
             
+        }
+
+        //Função para copiar no navegador
+        function copy(){
+            navigator.clipboard.writeText(inputEl.value)
         }
         
         //Tamanho da Senha
@@ -46,7 +62,12 @@
             generatePassword()
         })
 
+        const copyButtonEl = document.querySelector("#copy")
+        copyButtonEl.addEventListener('click', copy)
+
+        //Chamando a Função
         generatePassword()
     </script>
+
 </body>
 </html>
