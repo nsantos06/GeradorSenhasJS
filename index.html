@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@200..900&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="reset.css">
@@ -19,8 +22,25 @@
         </p>
     </section>
 
-    <input type="text" name="password" id="password"/>
-    
+    <section class="box">
+        <div class="password">
+            <div class="text">
+                <input type="text" name="password" id="password"/>
+            </div>
+            <div class="actions">
+                <button id="copy-1">
+                    <img src="copy-svgrepo-com.svg" width="42">
+                </button>
+                <button id="renew">
+                     <img src="renew-svgrepo-com.svg" width="42">
+                </button>
+            </div>
+        </div>
+        <div class="security-indicator">
+            <div id="security-indicator-bar" class = "bar safe" style="width: 90%"></div>
+        </div>
+    </section>
+
     <input 
         type="range" 
         name="password-length" 
@@ -29,7 +49,7 @@
         min="4" 
         max="64"
     />
-    <button id = "copy">Copiar Senha</button>
+    <button id = "copy-2">Copiar Senha</button>
     </main>   
     
     <script>
@@ -62,8 +82,8 @@
             generatePassword()
         })
 
-        const copyButtonEl = document.querySelector("#copy")
-        copyButtonEl.addEventListener('click', copy)
+        document.querySelector("#copy-1").addEventListener('click', copy)
+        document.querySelector("#copy-2").addEventListener('click', copy)
 
         //Chamando a Função
         generatePassword()
